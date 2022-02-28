@@ -1,17 +1,22 @@
 //DOM references
-var buttonEl = document.querySelector("#save-task");
 
-var tasksToDoEL = document.querySelector("#tasks-to-do");
+//calls entire form
+var formEl = document.querySelector("#task-form");
 
-var createTaskHandler = function () {
+//calls the ul
+var tasksToDoEl = document.querySelector("#tasks-to-do");
+
+var createTaskHandler = function (event) {
+  event.preventDefault();
   //creates new li
-  var taskItemEl = document.createElement("li");
-  //sets text content
-  taskItemEl.textContent = "hello new task!";
-  //adds to page under parent element tasksToDoEl
-  tasksToDoEL.appendChild(taskItemEl);
+  var listItemEl = document.createElement("li");
   //adds style to new line of text
-  taskItemEl.className = "task-item";
+  listItemEl.className = "task-item";
+  //sets text content
+  listItemEl.textContent = "hello new task!";
+  //adds to page under parent element tasksToDoEl
+  tasksToDoEl.appendChild(listItemEl);
+  console.log(event);
 };
 
-buttonEl.addEventListener("click", createTaskHandler);
+formEl.addEventListener("submit", createTaskHandler);
